@@ -1,9 +1,19 @@
-#### Reading a text file 
+using System;
+using System.IO;
 
-string fileContent = ReadFile("sampletext.txt");
+namespace SampleConsoleApplication
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string fileContent = ReadFile("sampletext.txt");
 
+            Console.WriteLine(fileContent);
 
-public static string ReadFile(string FileName)
+        }
+
+        public static string ReadFile(string FileName)
         {
             try
             {
@@ -23,3 +33,7 @@ public static string ReadFile(string FileName)
             }
             return null;
         }
+
+
+    }
+}
