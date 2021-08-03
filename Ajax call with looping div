@@ -1,0 +1,59 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js"></script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script type="text/javascript" src="script.js"></script>
+
+
+<div class="container">
+  <nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand">Mini Ecommerce</a>
+    <form class="form-inline" id="formItem" action="#">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" id="keyword" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="searchItem">Search</button>
+    </form>
+    <button class="btn btn-primary" id="cart"><i class="fas fa-shopping-cart"></i>(0)</button>
+  </nav>
+  <div class="row" id="shop">
+  </div>
+</div>
+
+<script>
+
+$.ajax({
+        url: "https://demos.telerik.com/kendo-ui/service/products",
+        dataType: "jsonp", // "jsonp" is required for cross-domain requests; use "json" for same-domain requests
+        success: function(result) {
+        console.log(result[1])
+          
+          // loop with div elements ------------
+            let content = '';
+            for(i=0; i<result.length; i++) {
+              content += `
+                <div id="keyBoard" class="col-md-4 mt-2">
+                          <div class="card" style="width: 18rem;">
+                              <img src="${result[i].ProductID}" class="card-img-top img-fluid" alt="keyboard">
+                              <div class="card-body">
+                                  <h5 class="card-title" id="itemName">${result[i].ProductName}</h5>
+                                  <p class="card-text" id="itemDesc">${result[i].UnitPrice}</p>
+                                  <p class="card-text">${result[i].UnitsInStock}</p>
+                                  <a href="#" class="btn btn-primary" id="addCart">Add to cart</a>
+                              </div>
+                          </div>
+                      </div>
+              `
+            };
+
+           document.querySelector("#shop").innerHTML = content;
+          // loop with div elements -------------------------
+          
+          
+          // notify the data source that the request succeeded
+        },
+        error: function(result) {
+          // notify the data source that the request failed
+        }
+      });  
+  
+</script>
