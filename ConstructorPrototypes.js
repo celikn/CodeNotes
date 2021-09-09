@@ -78,4 +78,12 @@
             }
 
         };
+
+
+  // Add method to existing prototype
+     String.prototype.display =function(){
+         console.log(this.toString());
+     }
+     
+     "Balalala".display();
  
