@@ -45,3 +45,37 @@
     }
 
     console.log(myOBj.toString());
+
+
+
+
+
+   // Constructor for objects.
+       function Flight(airlines, flightNumber){
+           this.airlines =airlines;
+           this.flightNumber = flightNumber;
+          
+       }
+
+       // Create prototype method for constructor
+       Flight.prototype.display= function(){
+               console.log(this.airlines);
+               console.log(this.flightNumber);
+
+        };
+
+        // Create prototype method for constructor
+        Flight.prototype = {
+
+            constructor: Flight, // otherwise ight2.constructor === Flight will return false
+
+            display: function(){
+               console.log(this.airlines);
+               console.log(this.flightNumber);
+            },
+            toString : function(){
+                return "flight number:" +this.flightNumber
+            }
+
+        };
+ 
