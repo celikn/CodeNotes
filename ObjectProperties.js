@@ -107,4 +107,21 @@ Object.defineProperties(creditCard3, {
             console.log(descriptor.value); // true
 
 
+ // prevent extent, seal and freeze
+            var creditCard4 = {
+                name: "John",
+
+            };
+    
+            console.log(Object.isExtensible(creditCard4)); // true
+            Object.preventExtensions(creditCard4); // false , now we cannot add new properties to the object
+
+            console.log(Object.isSealed(creditCard4)); // false
+            console.log(Object.seal(creditCard4)); // now we cannot do any configuration such as delete
+
+            console.log(Object.isSealed(creditCard4)); // true
+            console.log(Object.isFrozen(creditCard4)); // false
+
+            console.log(Object.freeze(creditCard4)); 
+            console.log(Object.isFrozen(creditCard4)); // true
 
