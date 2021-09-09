@@ -50,10 +50,13 @@ console.log(creditCard.name);
 var creditCard2={
     name : "John",
 }
+
 Object.defineProperty(creditCard2,"name",{
-    enumerable: false, // makes enumeration false
-    configurable:false  // makes delete and change false once set, it cannot be set to true
+    enumerable: false, // makes enumeration false, in default  it will be false 
+    configurable:false,  // makes delete and change false once set, it cannot be set to true in default  it will be false 
+    writable: true // in default  it will be false 
 });
+
 
 console.log("name" in creditCard2);
 console.log(creditCard2.inpropertyIsEnumerable("name"));
