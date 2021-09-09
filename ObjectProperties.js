@@ -92,6 +92,19 @@ Object.defineProperties(creditCard3, {
  console.log("name" in creditCard3);
 
 
+  // if we use define method then enumeratable,configurable and writable attriubutes will be false 
+           // as below they will be true
+            var creditCard4 = {
+                name: "John",
+
+            };
+     
+            var descriptor = Object.getOwnPropertyDescriptor(creditCard4,"name");
+
+            console.log(descriptor.enumerable); //true
+            console.log(descriptor.configurable); //true
+            console.log(descriptor.writable); //true
+            console.log(descriptor.value); // true
 
 
 
