@@ -122,6 +122,6 @@ Object.defineProperties(creditCard3, {
             console.log(Object.isSealed(creditCard4)); // true
             console.log(Object.isFrozen(creditCard4)); // false
 
-            console.log(Object.freeze(creditCard4)); 
+            console.log(Object.freeze(creditCard4)); // makes object non writeable
             console.log(Object.isFrozen(creditCard4)); // true
 
