@@ -31,5 +31,35 @@ console.log(course1.propertyIsEnumerable("name")); // true
 console.log(allProperties.propertyIsEnumerable("length")); // false because it is built in property
 
 
+// get and set property in object
+var creditCard={
+    _name : "John",
+    get name(){
+        return this._name
+    },
+    set name(value){
+       this._name=value;
+    }
+}
+
+console.log(creditCard.name);
+creditCard.name="Bob";
+console.log(creditCard.name);
+
+// make  an object non-enumerable
+var creditCard2={
+    name : "John",
+}
+Object.defineProperty(creditCard2,"name",{
+    enumerable: false
+});
+
+console.log("name" in creditCard2);
+console.log(creditCard2.inpropertyIsEnumerable("name"));
+
+
+
+
+
 
 
