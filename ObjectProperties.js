@@ -61,8 +61,35 @@ Object.defineProperty(creditCard2,"name",{
 console.log("name" in creditCard2);
 console.log(creditCard2.inpropertyIsEnumerable("name"));
 
+// Define properties for an empy object
+  var creditCard3 = {
 
+            };
 
+Object.defineProperties(creditCard3, {
+                _name: {
+                    value: "John",
+                    enumerable: true,
+                    configurable: true,
+                    writable: true,
+                },
+                // accessor properties
+                name: {
+                    get: function () {
+                        return this._name;
+                    },
+
+                    set: function () {
+                        return this._name = value;
+                    },
+                    enumerable: true,
+                    configurable: true,
+
+                }
+
+            });
+
+ console.log("name" in creditCard3);
 
 
 
