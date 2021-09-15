@@ -117,3 +117,37 @@ async function getData(){
 
         executeLoadFeatureFunction().then(....
                                           )
+    
+    
+    /////////////Promise.All 
+    
+    
+              
+
+// draft of promise all //it will give results in array
+
+//let promises =[__,__,__];
+//Promise.all(promises)
+//.then((results) => {
+//})
+//.catch((err)=> console.log(err));
+
+
+
+//it will give results in array
+// if any of promise have error then nothing will be return 
+let promises =[];
+for (i=0; i<100; i++){
+       promises.push(fetch(movieAPI))
+}
+
+Promise.all(promises)
+.then((results) => {
+    console.log(" all 100 promises resolved");
+}).catch((err)=> console.log(err));
+
+    
+    
+    
+    
+    
