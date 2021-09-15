@@ -58,7 +58,7 @@ function delay(time) {
 // Using fetch with promises
 var movieAPI= "https://api.themoviedb.org/3/movie/popular?api_key=2426d550977235ca6217917baa94407f&page=1"
 
-function setup() {
+function getData() {
     fetch(movieAPI)
         .then(response => response.json())
         .then(json => {
@@ -69,8 +69,23 @@ function setup() {
         })
         .catch(err => console.log(err))
 }
-setup()
+getData()
 
+ // Using fetch with async
+var movieAPI= "https://api.themoviedb.org/3/movie/popular?api_key=2426d550977235ca6217917baa94407f&page=1"
+getData()
+.then(()=>console.log("fetch successful"))
+.catch(err=> console.log(err))
+
+async function getData(){
+    let response= await  fetch(movieAPI);
+    let json = await response.json();
+    console.log(json.total_pages);
+    console.log(json.results[0]);
+    document.write(json.results[0].original_language);
+}    
+
+    
 /////_________________________
 
 
