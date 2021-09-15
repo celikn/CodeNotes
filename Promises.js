@@ -32,6 +32,33 @@
 
 
 ////---------------------
+//// Create your own promise example
+
+delay("nflrnfelrkf")
+.then(() => document.write("hello"))
+.catch((err) => console.log(err));
+
+
+delay(1000)
+.then(() => document.write("hello"))
+.catch((err) => console.log(err));
+
+
+function delay(time) {
+    return new Promise ((resolve,reject) => {
+      if (isNaN(time)){
+          reject(new Error("delay requires a valid number"))
+      };
+
+      setTimeout(resolve,time);
+})
+
+
+
+
+
+
+/////_________________________
 
 
    async function loadFeatures(geojsonItem, map) {
