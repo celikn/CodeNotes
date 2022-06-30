@@ -1,5 +1,5 @@
-/*Granting access to user*/
 
+/*Granting access to user*/
 grant all privileges on database databasename to username;
 
 
