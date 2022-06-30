@@ -1,4 +1,4 @@
-
+```
 /*Granting access to user*/
 grant all privileges on database databasename to username;
 
@@ -77,17 +77,17 @@ CASE
   END AS yirmibesbinpaftaadi
 /*----------------------------------------------------------------------------------------*/
 from (SELECT paftaadi,(ST_SquareGrid(0.25/2, geom)).*, geom as elligeom FROM pafta50000wgs84 ORDER BY i,j) as sub where ST_Within(ST_Centroid(geom),elligeom)
+```
+![Paftalar](https://user-images.githubusercontent.com/15700676/176743317-bb13d918-0ed6-4dd3-a0d6-99c230805e57.png)
 
 
-
-
-
-
-
-
-
-
-
-
-
+Proj Strings
+```
+Kibris
+'+proj=longlat +ellps=intl +towgs84=-16.42119,-175.98464,-169.61745,-0.3769321,-1.9565521,3.4285257,-0.8430685 +no_defs'
+Deniz
++proj=latlong +ellps=intl +towgs84=-89.05,-87.03,-124.56,0,0,0,0
+Kara
++proj=longlat +ellps=intl +towgs84=-84.8310,-103.9723,-127.4487,-0.17149,0,0.39951,1.0454 +no_defs'
+```
 
