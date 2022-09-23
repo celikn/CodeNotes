@@ -91,3 +91,79 @@ Kara
 +proj=longlat +ellps=intl +towgs84=-84.8310,-103.9723,-127.4487,-0.17149,0,0.39951,1.0454 +no_defs'
 ```
 
+
+
+Burada Geojson Feature Collection olarak verilen verinin geometrisini set edip tablo yapısında döndürüyoruz
+
+```
+WITH data AS(SELECT 
+'{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "population": 200
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-112.0372, 46.608058]
+      }
+    }
+  ]
+}'::json AS fc)
+    
+
+SELECT
+  row_number() OVER () AS gid,
+  feat->'properties' AS properties,
+  ST_SetSRID(ST_GeomFromGeoJSON(feat->>'geometry'),4230) AS geom
+  
+FROM (
+  SELECT json_array_elements(fc->'features') AS feat
+  FROM data
+) AS f;
+```
+
+
+Burada Geojson Feature Collection olarak verilen verinin geometrisinin koordinat dönüşümü yapılmaktadır. Geri dönün veri de feature collection olarak dönmekte.
+```
+WITH data AS(SELECT 
+'{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "population": 200
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-112.0372, 46.608058]
+      }
+    }
+  ]
+}'::json AS fc)
+SELECT jsonb_build_object(
+      'type',     'FeatureCollection',
+      'features', jsonb_agg(feature)
+    ) FROM(
+
+    SELECT
+       json_build_object(
+              'type',       'Feature',
+                                   'geometry',   ST_Transform(ST_SetSRID(ST_GeomFromGeoJSON(feat->>'geometry'),4230),
+           '+proj=longlat +ellps=intl +towgs84=-84.1,-101.8,-129.7,0.0,0.0,0.468,1.05 +no_defs'::text,
+         '+proj=longlat +datum=WGS84 +no_defs'::text)::json,
+              'properties', feat->'properties'
+      ) as feature
+
+    FROM (
+      SELECT json_array_elements(fc->'features') AS feat
+      FROM data
+    ) AS f) as final;
+```
+
+
+
+
