@@ -165,5 +165,13 @@ SELECT jsonb_build_object(
 ```
 
 
+ Geoserver CQL Query Example
+ 
+//Filtrelenmiş Propertyler ile contains
+http://localhost/geoserver/workspace/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=workspace:ruhsat_indir&PROPERTYNAME=Durum,Ruhsat_No&cql_filter=CONTAINS(geom,%20POINT%20(38%2037))&outputFormat=application/json&srsname=EPSG:4022&
+
+// Contains
+[http://10.51.10.101:8080/geoserver/tpao/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=workspace:ruhsat_indir&cql_filter=CONTAINS(geom, POINT (37 37))&outputFormat=application/json&srsname=EPSG:4022&
+
 
 
