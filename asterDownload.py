@@ -109,9 +109,10 @@ def main():
             for urlItem in fileList:
                 dowloadfileAsyncio(urlItem)
 
-        elif parallelRun == 3: ## joblib Not: prefer theads opsiyonu eklenmemesi durumunda 
-            ## TerminatedWorkerError hatası alınıyor. 
+        elif parallelRun == 3: ## joblib Not: prefer theads or multiprocessing opsiyonu eklenmemesi durumunda çalışıyor.
+            ## Aksi halde default opsiyon ile TerminatedWorkerError hatası alınıyor. 
             from joblib import Parallel, delayed
+            ## Parallel(n_jobs=2, prefer="multiprocessing")(delayed(dowloadfile)(urlItem) for urlItem in fileList)
             Parallel(n_jobs=2, prefer="threads")(delayed(dowloadfile)(urlItem) for urlItem in fileList)
 
         
