@@ -109,9 +109,10 @@ def main():
             for urlItem in fileList:
                 dowloadfileAsyncio(urlItem)
 
-        elif parallelRun == 3: ## joblib !!! Not working with M1Chip
+        elif parallelRun == 3: ## joblib Not: prefer theads opsiyonu eklenmemesi durumunda 
+            ## TerminatedWorkerError hatası alınıyor. 
             from joblib import Parallel, delayed
-            Parallel(n_jobs=2)(delayed(dowloadfile)(urlItem) for urlItem in fileList)
+            Parallel(n_jobs=2, prefer="threads")(delayed(dowloadfile)(urlItem) for urlItem in fileList)
 
         
         
