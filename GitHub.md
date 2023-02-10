@@ -7,5 +7,5 @@ ssh-add "C:/Users/user.name/.ssh/id_ed25519"  <br />
 
 
 
-After creating ssh key, dont forget to autorize your organization
+After creating ssh key, dont forget to autorize your organization (organization has enabled or enforced SAML SSO)
 https://docs.github.com/en/enterprise-cloud@latest/authentication/authenticating-with-saml-single-sign-on/authorizing-an-ssh-key-for-use-with-saml-single-sign-on
